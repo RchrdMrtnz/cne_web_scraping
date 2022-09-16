@@ -33,17 +33,17 @@ so that the data can be visible in a much more comfortable way.
             deceased=f'{info[4]}'
             unregistered=f'{info[3]}'
             if deceased == 'ESTATUS':
-                final=Fore.RED + ' Fallecido '
+                load=Fore.RED + ' Fallecido '
             elif unregistered == 'ESTATUS':
-                final=Fore.BLUE + ' No Registrado '
+                load=Fore.BLUE + ' No Registrado '
             else:
-                final=Fore.GREEN + f'''
+                load=Fore.GREEN + f'''
 {info[4]} {info[5]}
 {info[6]} {info[7]}
 {info[8]} {info[9]}
 {info[10]} {info[11]}
 {info[14]} {info[15]}'''
-            return final
+            return load
     except requests.exceptions.HTTPError as errh:
         print ("Http Error:",errh)
     except requests.exceptions.ConnectionError as errc:
@@ -61,7 +61,7 @@ if __name__=='__main__':
         else:
             print(Fore.RED+'\nSolo Numeros\n')
         print(Fore.WHITE)
-        continuar=input('Enter para continuar "n" para salir\n')
-        if continuar.lower() == 'n' or continuar.lower() == 'no':
+        next_dni=input('Enter para continuar "n" para salir\n')
+        if next_dni.lower() == 'n' or next_dni.lower() == 'no':
             break
     
