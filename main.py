@@ -5,6 +5,7 @@ required modules:
 requests
 beautifulsopu
 colorama
+env:pipenv
 '''
 import requests
 from bs4 import BeautifulSoup
@@ -52,14 +53,15 @@ so that the data can be visible in a much more comfortable way.
     except requests.exceptions.RequestException as err:
         print ("OOps: Something Else",err)
 
-while True:
-    dni_number=input('Cedula: ')
-    if dni_number.isdigit():
-        print(dni(dni_number))
-    else:
-        print(Fore.RED+'\nSolo Numeros\n')
-    print(Fore.WHITE)
-    continuar=input('Enter para continuar "n" para salir\n')
-    if continuar.lower() == 'n' or continuar.lower() == 'no':
-        break
+if __name__=='__main__':
+    while True:
+        dni_number=input('Cedula: ')
+        if dni_number.isdigit():
+            print(dni(dni_number))
+        else:
+            print(Fore.RED+'\nSolo Numeros\n')
+        print(Fore.WHITE)
+        continuar=input('Enter para continuar "n" para salir\n')
+        if continuar.lower() == 'n' or continuar.lower() == 'no':
+            break
     
