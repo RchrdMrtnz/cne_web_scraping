@@ -3,7 +3,7 @@ Created By: rchrdpdrz
 Date:09/15/2022
 required modules:
 requests
-beautifulsopu
+beautifulsoup
 colorama
 env:pipenv
 '''
@@ -12,9 +12,24 @@ from bs4 import BeautifulSoup
 from colorama import Fore,init
 init()
 
-def dni(num):
+def main() -> None:
+    '''receives an ID number and proceeds to download
+the user information hosted on the cne web site'''
+    id_number=input('Cedula: ')
+    if id_number.isdigit():
+        print(id_scraping(id_number))
+    else:
+        print(Fore.RED+'\nSolo Numeros\n')
+    print(Fore.WHITE)
+    next_id=input('Enter para continuar "n" para salir\n')
+    if next_id.lower() == 'n' or next_id.lower() == 'no':
+        exit()
+    return main()
+
+
+def id_scraping(num):
     '''
-the dni function is in charge of making a request
+the ID function is in charge of making a request
 to the cne (national electoral council)
 page which contains information of all
 Venezuelan citizens of legal age registered
@@ -54,14 +69,5 @@ so that the data can be visible in a much more comfortable way.
         print ("OOps: Something Else",err)
 
 if __name__=='__main__':
-    while True:
-        dni_number=input('Cedula: ')
-        if dni_number.isdigit():
-            print(dni(dni_number))
-        else:
-            print(Fore.RED+'\nSolo Numeros\n')
-        print(Fore.WHITE)
-        next_dni=input('Enter para continuar "n" para salir\n')
-        if next_dni.lower() == 'n' or next_dni.lower() == 'no':
-            break
+    main()
     
